@@ -35,7 +35,7 @@ class Counter extends Component {
                 <a className="waves-effect waves-light btn" onClick={this.props.increment}>+</a>{' '}
                 <a className="waves-effect waves-light btn" onClick={this.props.decrement}>-</a>{' '}
                 <a className="waves-effect waves-light btn" onClick={this.props.incrementIfOdd}>
-                    Increment ifodd
+                    Increment if odd
                 </a>{' '}
                 <a className="waves-effect waves-light btn"
                    onClick={!this.props.countdown
