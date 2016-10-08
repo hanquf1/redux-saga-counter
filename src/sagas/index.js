@@ -4,42 +4,47 @@ import {take, put, call, fork, race, cancelled} from 'redux-saga/effects'
 import {eventChannel, END} from 'redux-saga'
 import {INCREMENT_ASYNC, INCREMENT, CANCEL_INCREMENT_ASYNC, COUNTDOWN_TERMINATED} from '../actions/actionTypes'
 
-const action = type => ({type})
+const action = type => ({type});
 
 /*eslint-disable no-console*/
 const countdown = (secs) => {
-    console.debug('countdown', secs);
     return eventChannel(listener => {
             const iv = setInterval(() => {
                 secs -= 1;
-                console.debug('countdown', secs);
-                if (secs > 0)
+                if (secs > 0) {
+                    console.debug(' SAGA   :: countdown :: listener(secs)', secs);
                     listener(secs);
+                }
                 else {
+                    console.debug(' SAGA   :: countdown :: listener(END)', secs);
                     listener(END);
-                    clearInterval(iv)
-                    console.debug('countdown terminated')
+                    clearInterval(iv);
+                    console.debug(' SAGA   :: countdown :: countdown terminated');
                 }
             }, 1000);
             return () => {
-                clearInterval(iv)
-                console.debug('countdown cancelled')
+                clearInterval(iv);
+                console.debug(' SAGA   :: countdown :: countdown cancelled');
             }
         }
     )
-}
+};
 
 export function* incrementAsync({value}) {
-    const chan = yield call(countdown, value)
+    const chan = yield call(countdown, value);
     try {
         while (true) {
-            let seconds = yield take(chan)
+            let seconds = yield take(chan);
+            console.debug(' SAGA   :: incrementAsync :: WHILE :: INCREMENT_ASYNC\n\n  ⬇\n\n');
             yield put({type: INCREMENT_ASYNC, value: seconds})
+
         }
     } finally {
         if (!(yield cancelled())) {
-            yield put(action(INCREMENT))
-            yield put(action(COUNTDOWN_TERMINATED))
+            console.debug(' SAGA   :: incrementAsync :: FINALLY :: INCREMENT');
+            yield put(action(INCREMENT));
+            console.debug(' SAGA   :: incrementAsync :: FINALLY :: COUNTDOWN_TERMINATED\n\n  ⬇\n\n');
+            yield put(action(COUNTDOWN_TERMINATED));
         }
         chan.close()
     }
@@ -48,7 +53,8 @@ export function* incrementAsync({value}) {
 export function* watchIncrementAsync() {
     try {
         while (true) {
-            const action = yield take(INCREMENT_ASYNC)
+            console.debug(' SAGA   :: watchIncrementAsync :: WHILE');
+            const action = yield take(INCREMENT_ASYNC);
             // starts a 'Race' between an async increment and a user cancel action
             // if user cancel action wins, the incrementAsync will be cancelled automatically
             yield race([
@@ -57,7 +63,7 @@ export function* watchIncrementAsync() {
             ])
         }
     } finally {
-        console.debug('watchIncrementAsync terminated')
+        console.debug(' SAGA   :: watchIncrementAsync terminated');
     }
 }
 

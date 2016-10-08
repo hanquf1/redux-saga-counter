@@ -11,10 +11,6 @@ import {
 } from '../actions/actionTypes'
 
 class Counter extends Component {
-    constructor(props) {
-        super(...arguments);
-    }
-
     render() {
         return (
             <div className="container">
@@ -26,7 +22,8 @@ class Counter extends Component {
                                 Value: {this.props.counter}
                             </span>
                                 <p> this is a simple cancellable counter app.</p>
-                                <p> you can increment, decrement, increment async, increment if value is odd, and increment after 3s. </p>
+                                <p> you can increment, decrement, increment async, increment if value is odd, and
+                                    increment after 3s. </p>
                             </div>
                         </div>
                     </div>
@@ -42,7 +39,7 @@ class Counter extends Component {
                        ? () => this.props.incrementAsync(3)
                        : this.props.cancelIncrementAsync}
                    style={{color: this.props.countdown ? 'yellow' : 'white'}}>
-                    {this.props.countdown ? `Cancel increment (${this.props.countdown})` : 'increment after 3s'}
+                    {this.props.countdown ? `Cancel increment (${this.props.countdown})` : 'increment after 3s (cancellable)'}
                 </a>
             </div>
         );

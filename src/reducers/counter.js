@@ -10,9 +10,12 @@ import {
 export function countdown(state = 0, action) {
     switch (action.type) {
         case INCREMENT_ASYNC:
+            console.debug('REDUCER :: countdown :: INCREMENT_ASYNC\n\n  ⬇\n\n');
             return action.value;
         case COUNTDOWN_TERMINATED:
         case CANCEL_INCREMENT_ASYNC:
+            console.debug('REDUCER :: countdown :: COUNTDOWN_TERMINATED');
+            console.debug('REDUCER :: countdown :: CANCEL_INCREMENT_ASYNC\n\n  ⬇\n\n');
             return 0;
         default:
             return state;

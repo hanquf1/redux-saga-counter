@@ -23,6 +23,7 @@ export function incrementIfOdd() {
 
 export const INCREMENT_ASYNC = 'INCREMENT_ASYNC';
 export function incrementAsync(sec) {
+    console.debug('ACTION  :: INCREMENT_ASYNC\n\n  ⬇\n\n');
     return({
         type: INCREMENT_ASYNC, value:sec
     });
@@ -30,6 +31,8 @@ export function incrementAsync(sec) {
 
 export const CANCEL_INCREMENT_ASYNC = 'CANCEL_INCREMENT_ASYNC';
 export function cancelIncrementAsync() {
+    console.debug('### INTERRUPT ###');
+    console.debug('ACTION  :: CANCEL_INCREMENT_ASYNC\n\n  ⬇\n\n');
     return({
         type: CANCEL_INCREMENT_ASYNC
     });
@@ -37,6 +40,7 @@ export function cancelIncrementAsync() {
 
 export const COUNTDOWN_TERMINATED = 'COUNTDOWN_TERMINATED';
 export function countdownTeminated() {
+    console.debug('ACTION  :: COUNTDOWN_TERMINATED');
     return({
         type: COUNTDOWN_TERMINATED
     });
