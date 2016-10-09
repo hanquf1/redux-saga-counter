@@ -4,10 +4,11 @@ import {connect} from 'react-redux'
 
 import {
     increment,
-    decrement,
-    incrementIfOdd,
     incrementAsync,
-    cancelIncrementAsync
+    cancelIncrementAsync,
+    decrement,
+    decrementAsync,
+    incrementIfOdd
 } from '../actions/actionTypes'
 
 class Counter extends Component {
@@ -15,32 +16,39 @@ class Counter extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col s9 m9">
-                        <div className="card teal">
-                            <div className="card-content white-text">
-                            <span className="card-title">
-                                Value: {this.props.counter}
-                            </span>
-                                <p> this is a simple cancellable counter app.</p>
-                                <p> you can increment, decrement, increment async, increment if value is odd, and
-                                    increment after 3s. </p>
-                            </div>
+                    <div className="card teal">
+                        <div className="card-content white-text">
+                        <span className="card-title">
+                            Value: {this.props.counter}
+                        </span>
+                            <p> this is a simple cancellable counter app.</p>
+                            <p> you can increment, decrement, increment async, decrement async, and increment if value is odd.</p>
                         </div>
                     </div>
                 </div>
 
-                <a className="waves-effect waves-light btn" onClick={this.props.increment}>+</a>{' '}
-                <a className="waves-effect waves-light btn" onClick={this.props.decrement}>-</a>{' '}
-                <a className="waves-effect waves-light btn" onClick={this.props.incrementIfOdd}>
-                    Increment if odd
-                </a>{' '}
-                <a className="waves-effect waves-light btn"
-                   onClick={!this.props.countdown
-                       ? () => this.props.incrementAsync(3)
-                       : this.props.cancelIncrementAsync}
-                   style={{color: this.props.countdown ? 'yellow' : 'white'}}>
-                    {this.props.countdown ? `Cancel increment (${this.props.countdown})` : 'increment after 3s (cancellable)'}
-                </a>
+                <div className="row">
+                    <a className="waves-effect waves-light btn" onClick={this.props.decrementAsync}>
+                        Decrement after 1s (uncancellable)
+                    </a>{' '}
+                    <a className="waves-effect waves-light btn"
+                       onClick={!this.props.countdown
+                           ? () => this.props.incrementAsync(3)
+                           : this.props.cancelIncrementAsync}
+                       style={{color: this.props.countdown ? 'yellow' : 'white'}}>
+                        {this.props.countdown ? `Cancel increment (${this.props.countdown})` : 'increment after 3s (cancellable)'}
+                    </a>
+                </div>
+
+                <div className="row">
+                    <a className="waves-effect waves-light btn" onClick={this.props.increment}>Increment</a>{' '}
+                    <a className="waves-effect waves-light btn" onClick={this.props.decrement}>Decrement</a>{' '}
+                    <a className="waves-effect waves-light btn" onClick={this.props.incrementIfOdd}>
+                        Increment if odd
+                    </a>{' '}
+
+                </div>
+
             </div>
         );
     }
@@ -61,10 +69,11 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return ({
         increment: () => dispatch(increment()),
-        decrement: () => dispatch(decrement()),
-        incrementIfOdd: () => dispatch(incrementIfOdd()),
         incrementAsync: (sec) => dispatch(incrementAsync(sec)),
-        cancelIncrementAsync: () => dispatch(cancelIncrementAsync())
+        cancelIncrementAsync: () => dispatch(cancelIncrementAsync()),
+        decrement: () => dispatch(decrement()),
+        decrementAsync: () => dispatch(decrementAsync()),
+        incrementIfOdd: () => dispatch(incrementIfOdd())
     });
 };
 

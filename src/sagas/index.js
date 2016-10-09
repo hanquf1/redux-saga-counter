@@ -1,10 +1,23 @@
 /* eslint-disable no-constant-condition */
 
 import {take, put, call, fork, race, cancelled} from 'redux-saga/effects'
-import {eventChannel, END} from 'redux-saga'
-import {INCREMENT_ASYNC, INCREMENT, CANCEL_INCREMENT_ASYNC, COUNTDOWN_TERMINATED} from '../actions/actionTypes'
+import {eventChannel, END, delay, takeEvery} from 'redux-saga'
+import {
+    INCREMENT_ASYNC,
+    INCREMENT,
+    DECREMENT,
+    CANCEL_INCREMENT_ASYNC,
+    COUNTDOWN_TERMINATED
+} from '../actions/actionTypes'
 
 const action = type => ({type});
+
+// Our worker Saga: will perform the async decrement task
+export function* decrementAsync() {
+    console.debug(' SAGA   :: decrementAsync \n\n  ⬇\n\n');
+    yield delay(1000);
+    yield put({type: 'DECREMENT'});
+}
 
 /*eslint-disable no-console*/
 const countdown = (secs) => {
@@ -68,5 +81,9 @@ export function* watchIncrementAsync() {
 }
 
 export default function* rootSaga() {
-    yield fork(watchIncrementAsync)
+    yield [
+        fork(watchIncrementAsync)
+    ];
+    yield takeEvery('DECREMENT_ASYNC', decrementAsync);
+
 }

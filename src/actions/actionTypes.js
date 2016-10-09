@@ -7,20 +7,6 @@ export function increment() {
     });
 }
 
-export const DECREMENT = 'DECREMENT';
-export function decrement() {
-    return({
-        type: DECREMENT
-    });
-}
-
-export const INCREMENT_IF_ODD = 'INCREMENT_IF_ODD';
-export function incrementIfOdd() {
-    return({
-        type: INCREMENT_IF_ODD
-    });
-}
-
 export const INCREMENT_ASYNC = 'INCREMENT_ASYNC';
 export function incrementAsync(sec) {
     console.debug('ACTION  :: INCREMENT_ASYNC\n\n  ⬇\n\n');
@@ -37,6 +23,30 @@ export function cancelIncrementAsync() {
         type: CANCEL_INCREMENT_ASYNC
     });
 }
+
+export const DECREMENT = 'DECREMENT';
+export function decrement() {
+    return({
+        type: DECREMENT
+    });
+}
+
+
+export const DECREMENT_ASYNC = 'DECREMENT_ASYNC';
+export function decrementAsync() {
+    console.debug('ACTION  :: DECREMENT_ASYNC\n\n  ⬇\n\n');
+    return({
+        type: DECREMENT_ASYNC
+    });
+}
+
+export const INCREMENT_IF_ODD = 'INCREMENT_IF_ODD';
+export function incrementIfOdd() {
+    return({
+        type: INCREMENT_IF_ODD
+    });
+}
+
 
 export const COUNTDOWN_TERMINATED = 'COUNTDOWN_TERMINATED';
 export function countdownTeminated() {
