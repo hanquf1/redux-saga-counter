@@ -1,7 +1,17 @@
 
 // Action types
+
+export const RESET = 'RESET';
+export function reset() {
+    console.debug(`ACTION  :: RESET \n\n  ⬇\n\n`);
+    return({
+        type: RESET
+    });
+}
+
 export const INCREMENT = 'INCREMENT';
 export function increment() {
+    console.debug(`ACTION  :: INCREMENT \n\n  ⬇\n\n`);
     return({
         type: INCREMENT
     });
@@ -26,6 +36,7 @@ export function cancelIncrementAsync() {
 
 export const DECREMENT = 'DECREMENT';
 export function decrement() {
+    console.debug(`ACTION  :: DECREMENT \n\n  ⬇\n\n`);
     return({
         type: DECREMENT
     });
@@ -42,6 +53,7 @@ export function decrementAsync(sec) {
 
 export const INCREMENT_IF_ODD = 'INCREMENT_IF_ODD';
 export function incrementIfOdd() {
+    console.debug(`ACTION  :: INCREMENT_IF_ODD \n\n  ⬇\n\n`);
     return({
         type: INCREMENT_IF_ODD
     });

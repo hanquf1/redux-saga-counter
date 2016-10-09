@@ -3,6 +3,7 @@ import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 
 import {
+    reset,
     increment,
     incrementAsync,
     cancelIncrementAsync,
@@ -19,7 +20,7 @@ class Counter extends Component {
                     <div className="col s12 center">
                         <div className="card teal">
                             <div className="card-content white-text">
-                                <span className="card-title">
+                                <span className="card-title" style={{color:'yellow'}}>
                                     Value: {this.props.counter}
                                 </span>
                                 <p> this is a simple counter.</p>
@@ -46,14 +47,14 @@ class Counter extends Component {
                 <div className="row">
                     <div className="col s12 center">
 
-                        <a className="waves-effect waves-light btn" onClick={this.props.increment}>Increment</a>{' '}
                         <a className="waves-effect waves-light btn" onClick={this.props.decrement}>Decrement</a>{' '}
+                        <a className="waves-effect waves-light btn" onClick={this.props.reset}>Reset</a>{' '}
+                        <a className="waves-effect waves-light btn" onClick={this.props.increment}>Increment</a>{' '}
                         <a className="waves-effect waves-light btn" onClick={this.props.incrementIfOdd}>
                             Increment if odd
                         </a>{' '}
                     </div>
                 </div>
-
             </div>
         );
     }
@@ -73,6 +74,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return ({
+        reset: () => dispatch(reset()),
         increment: () => dispatch(increment()),
         incrementAsync: (sec) => dispatch(incrementAsync(sec)),
         cancelIncrementAsync: () => dispatch(cancelIncrementAsync()),
