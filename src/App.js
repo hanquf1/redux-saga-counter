@@ -7,7 +7,7 @@ export default class App extends Component {
             <div>
                 <nav className="blue darken-2" role="navigation">
                     <div className="nav-wrapper container">
-                        <a className="brand-logo">Redux Saga Cancellable Counter </a>
+                        <a className="brand-logo">Redux Saga Counter </a>
                     </div>
                 </nav>
                 <Counter/>

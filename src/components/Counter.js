@@ -16,37 +16,44 @@ class Counter extends Component {
         return (
             <div className="container">
                 <div className="row">
+                    <div className="col s12 center">
+
                     <div className="card teal">
                         <div className="card-content white-text">
                         <span className="card-title">
                             Value: {this.props.counter}
                         </span>
-                            <p> this is a simple cancellable counter app.</p>
-                            <p> you can increment, decrement, increment async, decrement async, and increment if value is odd.</p>
+                            <p> this is a simple counter.</p>
+
                         </div>
+                    </div>
                     </div>
                 </div>
 
                 <div className="row">
-                    <a className="waves-effect waves-light btn" onClick={() => this.props.decrementAsync(1)}>
-                        Decrement after 1s (uncancellable)
-                    </a>{' '}
-                    <a className="waves-effect waves-light btn"
-                       onClick={!this.props.countdown
-                           ? () => this.props.incrementAsync(3)
-                           : this.props.cancelIncrementAsync}
-                       style={{color: this.props.countdown ? 'yellow' : 'white'}}>
-                        {this.props.countdown ? `Cancel increment (${this.props.countdown})` : `increment after 3s (cancellable)`}
-                    </a>
+                    <div className="col s12 center">
+                        <a className="waves-effect waves-light btn" onClick={() => this.props.decrementAsync(1)}>
+                            Decrement after 1s (uncancellable)
+                        </a>{' '}
+                        <a className="waves-effect waves-light btn"
+                           onClick={!this.props.countdown
+                               ? () => this.props.incrementAsync(3)
+                               : this.props.cancelIncrementAsync}
+                           style={{color: this.props.countdown ? 'yellow' : 'white'}}>
+                            {this.props.countdown ? `Cancel increment (${this.props.countdown})` : `increment after 3s (cancellable)`}
+                        </a>
+                    </div>
                 </div>
 
                 <div className="row">
-                    <a className="waves-effect waves-light btn" onClick={this.props.increment}>Increment</a>{' '}
-                    <a className="waves-effect waves-light btn" onClick={this.props.decrement}>Decrement</a>{' '}
-                    <a className="waves-effect waves-light btn" onClick={this.props.incrementIfOdd}>
-                        Increment if odd
-                    </a>{' '}
+                    <div className="col s12 center">
 
+                        <a className="waves-effect waves-light btn" onClick={this.props.increment}>Increment</a>{' '}
+                        <a className="waves-effect waves-light btn" onClick={this.props.decrement}>Decrement</a>{' '}
+                        <a className="waves-effect waves-light btn" onClick={this.props.incrementIfOdd}>
+                            Increment if odd
+                        </a>{' '}
+                    </div>
                 </div>
 
             </div>
