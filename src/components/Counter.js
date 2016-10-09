@@ -10,7 +10,7 @@ import {
     decrement,
     decrementAsync,
     incrementIfOdd
-} from '../actions/actionTypes'
+} from '../actions/actions'
 
 class Counter extends Component {
     render() {

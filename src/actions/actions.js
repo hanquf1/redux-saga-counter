@@ -1,5 +1,5 @@
 
-// Action types
+// Actions
 
 export const RESET = 'RESET';
 export function reset() {

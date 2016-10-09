@@ -9,7 +9,7 @@ import {
     DECREMENT_ASYNC,
     CANCEL_INCREMENT_ASYNC,
     COUNTDOWN_TERMINATED
-} from '../actions/actionTypes'
+} from '../actions/actions'
 
 const action = type => ({type});
 

@@ -7,7 +7,7 @@ import {
     INCREMENT_ASYNC,
     CANCEL_INCREMENT_ASYNC,
     COUNTDOWN_TERMINATED
-} from '../actions/actionTypes'
+} from '../actions/actions'
 
 export function countdown(state = 0, action) {
     switch (action.type) {
