@@ -15,7 +15,7 @@ export function countdown(state = 0, action) {
             return action.value;
         case DECREMENT_ASYNC:
             console.debug('REDUCER :: countdown :: DECREMENT_ASYNC\n\n  ⬇\n\n');
-            //return action.value;
+            return 0;
         case COUNTDOWN_TERMINATED:
         case CANCEL_INCREMENT_ASYNC:
             console.debug('REDUCER :: countdown :: COUNTDOWN_TERMINATED');

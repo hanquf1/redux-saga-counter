@@ -6,6 +6,7 @@ import {
     INCREMENT_ASYNC,
     INCREMENT,
     DECREMENT,
+    DECREMENT_ASYNC,
     CANCEL_INCREMENT_ASYNC,
     COUNTDOWN_TERMINATED
 } from '../actions/actionTypes'
@@ -13,10 +14,13 @@ import {
 const action = type => ({type});
 
 // Our worker Saga: will perform the async decrement task
-export function* decrementAsync() {
-    console.debug(' SAGA   :: decrementAsync \n\n  ⬇\n\n');
-    yield delay(1000);
-    yield put({type: 'DECREMENT'});
+export function* decrementAsync(action) {
+    const sec = action.value;
+    console.debug(`SAGA   :: decrementAsync :: ${sec}sec \n\n  ⬇\n\n`);
+    yield delay(sec * 1000);
+    yield put({type: DECREMENT});
+    yield put({type: COUNTDOWN_TERMINATED});
+
 }
 
 /*eslint-disable no-console*/
@@ -80,10 +84,28 @@ export function* watchIncrementAsync() {
     }
 }
 
+// export function* watchDecrementAsync() {
+//     try {
+//         while (true) {
+//             console.debug(' SAGA   :: watchDecrementAsync :: WHILE');
+//             const action = yield take(DECREMENT_ASYNC);
+//             // starts a 'Race' between an async increment and a user cancel action
+//             // if user cancel action wins, the incrementAsync will be cancelled automatically
+//             yield race([
+//                 call(decrementAsync, action)
+//             ])
+//         }
+//     } finally {
+//         console.debug(' SAGA   :: watchIncrementAsync terminated');
+//     }
+// }
+
 export default function* rootSaga() {
     yield [
         fork(watchIncrementAsync)
     ];
-    yield takeEvery('DECREMENT_ASYNC', decrementAsync);
-
+    // yield [
+    //     fork(watchDecrementAsync)
+    // ];
+    yield takeEvery(DECREMENT_ASYNC, decrementAsync);
 }

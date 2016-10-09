@@ -13,6 +13,7 @@ import {
 
 class Counter extends Component {
     render() {
+        console.debug('this.props.countdown',this.props);
         return (
             <div className="container">
                 <div className="row">
@@ -28,7 +29,7 @@ class Counter extends Component {
                 </div>
 
                 <div className="row">
-                    <a className="waves-effect waves-light btn" onClick={this.props.decrementAsync}>
+                    <a className="waves-effect waves-light btn" onClick={() => this.props.decrementAsync(1)}>
                         Decrement after 1s (uncancellable)
                     </a>{' '}
                     <a className="waves-effect waves-light btn"
@@ -36,7 +37,7 @@ class Counter extends Component {
                            ? () => this.props.incrementAsync(3)
                            : this.props.cancelIncrementAsync}
                        style={{color: this.props.countdown ? 'yellow' : 'white'}}>
-                        {this.props.countdown ? `Cancel increment (${this.props.countdown})` : 'increment after 3s (cancellable)'}
+                        {this.props.countdown ? `Cancel increment (${this.props.countdown})` : `increment after 3s (cancellable)`}
                     </a>
                 </div>
 
@@ -72,7 +73,7 @@ let mapDispatchToProps = (dispatch) => {
         incrementAsync: (sec) => dispatch(incrementAsync(sec)),
         cancelIncrementAsync: () => dispatch(cancelIncrementAsync()),
         decrement: () => dispatch(decrement()),
-        decrementAsync: () => dispatch(decrementAsync()),
+        decrementAsync: (sec) => dispatch(decrementAsync(sec)),
         incrementIfOdd: () => dispatch(incrementIfOdd())
     });
 };

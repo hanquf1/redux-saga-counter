@@ -9,7 +9,7 @@ export function increment() {
 
 export const INCREMENT_ASYNC = 'INCREMENT_ASYNC';
 export function incrementAsync(sec) {
-    console.debug('ACTION  :: INCREMENT_ASYNC\n\n  ⬇\n\n');
+    console.debug(`ACTION  :: INCREMENT_ASYNC :: ${sec}sec \n\n  ⬇\n\n`);
     return({
         type: INCREMENT_ASYNC, value:sec
     });
@@ -33,10 +33,10 @@ export function decrement() {
 
 
 export const DECREMENT_ASYNC = 'DECREMENT_ASYNC';
-export function decrementAsync() {
-    console.debug('ACTION  :: DECREMENT_ASYNC\n\n  ⬇\n\n');
+export function decrementAsync(sec) {
+    console.debug(`ACTION  :: DECREMENT_ASYNC :: ${sec}sec  \n\n  ⬇\n\n`);
     return({
-        type: DECREMENT_ASYNC
+        type: DECREMENT_ASYNC, value:sec
     });
 }
 
