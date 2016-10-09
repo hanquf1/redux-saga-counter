@@ -13,7 +13,6 @@ import {
 
 class Counter extends Component {
     render() {
-        console.debug('this.props.countdown',this.props);
         return (
             <div className="container">
                 <div className="row">
