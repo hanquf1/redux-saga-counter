@@ -3,7 +3,7 @@
 
 export const RESET = 'RESET';
 export function reset() {
-    console.debug(`ACTION  :: RESET \n\n  ⬇\n\n`);
+    console.debug(`#\n\nACTION  :: RESET \n\n  ⬇\n\n`);
     return({
         type: RESET
     });
@@ -11,7 +11,7 @@ export function reset() {
 
 export const INCREMENT = 'INCREMENT';
 export function increment() {
-    console.debug(`ACTION  :: INCREMENT \n\n  ⬇\n\n`);
+    console.debug(`#\n\nACTION  :: INCREMENT \n\n  ⬇\n\n`);
     return({
         type: INCREMENT
     });
@@ -19,7 +19,7 @@ export function increment() {
 
 export const INCREMENT_ASYNC = 'INCREMENT_ASYNC';
 export function incrementAsync(sec) {
-    console.debug(`ACTION  :: INCREMENT_ASYNC :: ${sec}sec \n\n  ⬇\n\n`);
+    console.debug(`#\n\nACTION  :: INCREMENT_ASYNC :: ${sec}sec \n\n  ⬇\n\n`);
     return({
         type: INCREMENT_ASYNC, value:sec
     });
@@ -36,7 +36,7 @@ export function cancelIncrementAsync() {
 
 export const DECREMENT = 'DECREMENT';
 export function decrement() {
-    console.debug(`ACTION  :: DECREMENT \n\n  ⬇\n\n`);
+    console.debug(`#\n\nACTION  :: DECREMENT \n\n  ⬇\n\n`);
     return({
         type: DECREMENT
     });
@@ -45,7 +45,7 @@ export function decrement() {
 
 export const DECREMENT_ASYNC = 'DECREMENT_ASYNC';
 export function decrementAsync(sec) {
-    console.debug(`ACTION  :: DECREMENT_ASYNC :: ${sec}sec  \n\n  ⬇\n\n`);
+    console.debug(`#\n\nACTION  :: DECREMENT_ASYNC :: ${sec}sec  \n\n  ⬇\n\n`);
     return({
         type: DECREMENT_ASYNC, value:sec
     });
@@ -53,7 +53,7 @@ export function decrementAsync(sec) {
 
 export const INCREMENT_IF_ODD = 'INCREMENT_IF_ODD';
 export function incrementIfOdd() {
-    console.debug(`ACTION  :: INCREMENT_IF_ODD \n\n  ⬇\n\n`);
+    console.debug(`#\n\nACTION  :: INCREMENT_IF_ODD \n\n  ⬇\n\n`);
     return({
         type: INCREMENT_IF_ODD
     });
