@@ -17,10 +17,10 @@ export function countdown(state = 0, action) {
         case DECREMENT_ASYNC:
             console.debug('REDUCER :: countdown :: DECREMENT_ASYNC\n\n  ⬇\n\n');
             return 0;
-        case COUNTDOWN_TERMINATED:
         case CANCEL_INCREMENT_ASYNC:
-            console.debug('REDUCER :: countdown :: COUNTDOWN_TERMINATED');
+        case COUNTDOWN_TERMINATED:
             console.debug('REDUCER :: countdown :: CANCEL_INCREMENT_ASYNC\n\n  ⬇\n\n');
+            console.debug('REDUCER :: countdown :: COUNTDOWN_TERMINATED');
             return 0;
         default:
             return state;
