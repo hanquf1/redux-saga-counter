@@ -19,7 +19,7 @@ export function countdown(state = 0, action) {
             return 0;
         case CANCEL_INCREMENT_ASYNC:
         case COUNTDOWN_TERMINATED:
-            console.debug('REDUCER :: countdown :: CANCEL_INCREMENT_ASYNC\n\n  ⬇\n\n');
+            console.debug('REDUCER :: countdown :: CANCEL_INCREMENT_ASYNC');
             console.debug('REDUCER :: countdown :: COUNTDOWN_TERMINATED');
             return 0;
         default:
