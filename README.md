@@ -1,6 +1,6 @@
 # Redux Saga Counter
 ## About
-This is a simple counter app built with React, Redux and redux-saga.
+This is a simple counter app built with react, redux and redux-saga.
 
 # Getting started
 The easiest way to get started is to clone this repo, run npm install and start. The counter will be running at http://localhost:3000. 
